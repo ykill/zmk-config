@@ -19,4 +19,4 @@
 ---
 include:
   - board: nice_nano
-    shield: knob_goblin
+    shield: C658-4081
