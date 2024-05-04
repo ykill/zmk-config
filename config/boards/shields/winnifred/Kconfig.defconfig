@@ -1,6 +1,6 @@
 if SHIELD_WINNIFRED
 
 config ZMK_KEYBOARD_NAME
-  default "winnifred"
+  default "C658-4081"
 
 endif
