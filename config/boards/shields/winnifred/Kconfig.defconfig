@@ -1,0 +1,6 @@
+if SHIELD_WINNIFRED
+
+config ZMK_KEYBOARD_NAME
+  default "winnifred"
+
+endif
