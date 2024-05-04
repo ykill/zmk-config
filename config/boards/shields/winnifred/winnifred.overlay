@@ -36,7 +36,7 @@
 /* This is pseudocode, need a polled pin for capslock instead of matrix. */
     kscan1: kscan {
         compatible = "zmk,kscan-gpio-direct";
-        polling-interval-msec = <25>;
+        toggle-mode;
         input-gpios
             = <&gpio0 02 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
             ;
