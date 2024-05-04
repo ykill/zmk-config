@@ -19,4 +19,4 @@
 ---
 include:
   - board: nice_nano
-    shield: C658-4081
+    shield: winnifred
