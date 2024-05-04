@@ -33,6 +33,16 @@
             ;
     };
 
+
+    kscan1: kscan {
+        compatible = "zmk,kscan-gpio-direct";
+        polling-interval-msec = <25>;
+        input-gpios
+            = <&gpio0 02 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            ;
+    };
+
+
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         columns = <16>;
