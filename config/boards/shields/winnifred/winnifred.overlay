@@ -1,61 +1,89 @@
+/*	
+ * Copyright (c) 2024 Mick Reed
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 #include <dt-bindings/zmk/matrix_transform.h>
 
-/ {
-    chosen {
-        zmk,kscan = &kscan0;
-        zmk,matrix-transform = &default_transform;
-    };
 
-    encoder_1: encoder_1 {
-        compatible = "alps,ec11";
-        a-gpios = <&pro_micro 9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        b-gpios = <&pro_micro 8 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        steps = <80>;
-        status = "okay";
-    };
+&uart0 { status = "disabled"; };
 
-    kscan0: kscan {
-        compatible = "zmk,kscan-gpio-demux";
-        polling-interval-msec = <25>;
-        input-gpios
-            = <&gpio1 00 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            , <&gpio0 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            , <&gpio1 04 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            , <&gpio1 06 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            , <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            , <&gpio0 29 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            ;
-        output-gpios
-            = <&gpio0 17 GPIO_ACTIVE_HIGH>
-            , <&gpio0 20 GPIO_ACTIVE_HIGH>
-            , <&gpio0 22 GPIO_ACTIVE_HIGH>
-            , <&gpio0 24 GPIO_ACTIVE_HIGH>
-            ;
-    };
-
-/* This is pseudocode, need a polled pin for capslock instead of matrix. */
-    kscan1: kscan {
-        compatible = "zmk,kscan-gpio-direct";
-        toggle-mode;
-        input-gpios
-            = <&gpio0 02 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-            ;
-    };
-
-
-    default_transform: keymap_transform_0 {
-        compatible = "zmk,matrix-transform";
-        columns = <16>;
-        rows = <5>;
-
-        map = <
-        RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5) RC(0,6) RC(0,7) RC(0,8) RC(0,9) RC(0,10) RC(0,11) RC(0,12) RC(0,13)  RC(0,14) RC(0,15)
-RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5) RC(1,6) RC(1,7) RC(1,8) RC(1,9)  RC(1,10) RC(1,11) RC(1,12) RC(1,13) RC(1,14) RC(1,15)
-RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6) RC(2,7) RC(2,8) RC(2,9)  RC(2,10) RC(2,11) RC(2,12)          RC(2,14) RC(2,15)
-RC(3,0) RC(3,1) RC(0,0) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8)  RC(3,9)  RC(3,10) RC(3,11) RC(3,12) RC(3,14) RC(3,15)
-RC(4,0) RC(4,1) RC(4,2) RC(4,3)                 RC(4,6)                 RC(4,9)  RC(4,10) RC(4,11) RC(4,12)          RC(4,14) RC(4,15)
-        >;
-    };
+&pro_micro_spi {
+	status = "okay";
+	cs-gpios = <&gpio1 11 GPIO_ACTIVE_LOW>;
+	shifter: 595@0 {
+		compatible = "zmk,gpio-595";
+		status = "okay";
+		gpio-controller;
+		spi-max-frequency = <200000>;
+		reg = <0>;
+		#gpio-cells = <2>;
+		ngpios = <16>;
+	};
 };
+
+/ {
+	chosen {
+		zmk,kscan = &kscan0;
+		zmk,matrix_transform = &default_transform;
+	};
+
+	default_transform: keymap_transform_0 {
+		compatible = "zmk,matrix-transform";
+		columns = <16>;
+		rows = <6>;
+
+// |                                            A1                                                               |
+// | A2  | A3  | A4  | A5  | A6  | A7  | A8  | A9  | A10 | A11 | A12 | A13 | A14 |  A15  | A16 | A17 | A18 | A19 |
+// |  A20  | A21 | A22 | A23 | A24 | A25 | A26 | A27 | A28 | A29 | A30 | A31 | A32       | A33 | A34 | A35 | A36 |
+// |    A37  | A38 | A39 | A40 | A41 | A42 | A43 | A44 | A45 | A46 | A47 | A48 |   A49   | A50 | A51 | A52 | A53 |
+// |      A54     | A55 | A56 | A57 | A58 | A59 | A60 | A61 | A62 | A63 | A64 |   A65    | A66 | A67 | A68 |     |
+// | A69 | A70 |  A71  | A72 |            A73              | A74 | A75 | A76 | A77 | A78 | A79       | A80 | A81 |
+
+		map = <
+RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5) RC(1,6) RC(1,7) RC(1,8) RC(1,9) RC(1,10) RC(1,11) RC(0,12) RC(0,13)     RC(0,14) RC(0,15)          RC(5,14)
+RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10) RC(2,11) RC(2,12)              RC(2,14) RC(2,15) RC(3,15) RC(5,13)
+RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9) RC(3,10) RC(3,11) RC(2,13)              RC(3,12) RC(3,13) RC(3,14) RC(5,12)
+RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5) RC(4,6) RC(4,7) RC(4,8) RC(4,9) RC(4,10) RC(4,11)                       RC(4,12) RC(4,13) RC(4,14)
+        RC(5,0) RC(5,1) RC(5,2)         RC(5,3)         RC(5,4) RC(5,5) RC(5,6) RC(5,7) RC(5,8)                         RC(5,9)     RC(5,10)       RC(5,11)
+
+		>;
+	};
+
+	kscan0: kscan_0 {
+		compatible = "zmk,kscan-gpio-matrix";
+		diode-direction = "col2row";
+		
+		col-gpios
+			= <&shifter 15 GPIO_ACTIVE_HIGH>
+			, <&shifter 14 GPIO_ACTIVE_HIGH>
+			, <&shifter 13 GPIO_ACTIVE_HIGH>
+			, <&shifter 12 GPIO_ACTIVE_HIGH>
+			, <&shifter 11 GPIO_ACTIVE_HIGH>
+			, <&shifter 10 GPIO_ACTIVE_HIGH>
+			, <&shifter  9 GPIO_ACTIVE_HIGH>
+			, <&shifter  8 GPIO_ACTIVE_HIGH>
+			, <&shifter  7 GPIO_ACTIVE_HIGH>
+			, <&shifter  6 GPIO_ACTIVE_HIGH>
+			, <&shifter  5 GPIO_ACTIVE_HIGH>
+			, <&shifter  4 GPIO_ACTIVE_HIGH>
+			, <&shifter  3 GPIO_ACTIVE_HIGH>
+			, <&shifter  2 GPIO_ACTIVE_HIGH>
+			, <&shifter  1 GPIO_ACTIVE_HIGH>
+			, <&shifter  0 GPIO_ACTIVE_HIGH>
+			;
+		
+		row-gpios
+			= <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+			, <&gpio1  0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+			, <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+			, <&gpio1  4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+			, <&gpio1  6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+			, <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+			;
+	};
+};
+
 
 
