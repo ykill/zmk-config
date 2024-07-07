@@ -2,7 +2,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
- {
+/ {
     keymap {
         compatible = "zmk,keymap";
         default_layer {
@@ -14,5 +14,5 @@
                 &kp LEFT_ALT &kp LEFT_GUI &kp GRAVE &kp SPACE &kp BACKSLASH &kp LEFT_ARROW &kp RIGHT_ARROW &kp DOWN_ARROW &kp UP_ARROW &kp NUMBER_0 &kp KP_DOT &kp KP_ENTER
             >;
         };
-    }
+    };
 };
