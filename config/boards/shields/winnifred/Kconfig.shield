@@ -1,2 +1,5 @@
+# Copyright (c) 2020 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
 config SHIELD_WINNIFRED
     def_bool $(shields_list_contains,winnifred)

@@ -1,6 +1,9 @@
+# Copyright (c) 2024 Mick Reed
+# SPDX-License-Identifier: MIT
+
 if SHIELD_WINNIFRED
 
 config ZMK_KEYBOARD_NAME
-  default "C658-4081"
+  default "winnifred"
 
 endif
