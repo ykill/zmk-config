@@ -1,0 +1,1 @@
+To revive a classic board, Nice!Nano V1.0 is paired with a daughterboard containing two SN74AHC595 shift registers. This provides 16 columns and 6 rows to accomodate 81 keyswitches, and leave room for encoders and LEDs on the N!N GPIO. A PCB for the switches is planned.
