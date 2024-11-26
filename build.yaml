@@ -20,3 +20,4 @@
 include:
   - board: nice_nano
     shield: winnifred
+    snippet: studio-rpc-usb-uart
