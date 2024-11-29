@@ -6,4 +6,4 @@ url: https://github.com/ykill/zmk-config/
 requires: [pro_micro]
 features:
   - keys
-
+  - studio
