@@ -1,6 +1,6 @@
 file_format: "1"
-id: winnifred
-name: winnifred
+id: slaps
+name: slaps
 type: shield
 requires: [pro_micro]
 features:

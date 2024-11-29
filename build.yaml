@@ -19,6 +19,6 @@
 ---
 include:
   - board: nice_nano
-    shield: winnifred
+    shield: slaps
     snippet: studio-rpc-usb-uart
     
