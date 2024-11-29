@@ -2,6 +2,7 @@ file_format: "1"
 id: slaps
 name: slaps
 type: shield
+url: https://github.com/ykill/zmk-config/
 requires: [pro_micro]
 features:
   - keys
