@@ -8,14 +8,15 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define DEFAULT 0
+#define BASE 0
 #define NUM_SYM_NAV 1
+#define EXTRA1 2
 
 / {
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        base {
             bindings = <
                 &kp ESCAPE &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5 &kp NUMBER_6 &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0 &kp MINUS &kp EQUAL &kp BACKSPACE &kp DELETE &lt NUM_SYM_NAV KP_EQUAL &kp KP_MULTIPLY
                 &kp TAB &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp RETURN &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9 &kp PLUS
@@ -32,6 +33,9 @@
                 &trans &bt BT_CLR &sys_reset &studio_unlock &none &none &none &none &none &none &none &trans &none &none &kp PAGE_DOWN
                 &kp RIGHT_ALT &kp RIGHT_GUI &none &trans &none &trans &trans &trans &trans &trans &trans &trans
             >;
+        };
+        extra1 {
+            status = "reserved";
         };
 
     };
