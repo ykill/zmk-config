@@ -8,7 +8,6 @@
 #include "slaps-layouts.dtsi"
 
 
-&uart0 { status = "disabled"; };
 
 &pro_micro_spi {
 	status = "okay";
