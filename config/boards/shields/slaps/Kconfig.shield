@@ -4,4 +4,3 @@
 config SHIELD_SLAPS
     def_bool $(shields_list_contains,slaps)
 
-CONFIG_ZMK_STUDIO=y
