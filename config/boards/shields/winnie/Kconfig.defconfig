@@ -1,0 +1,9 @@
+# Copyright (c) 2024 Mick Reed
+# SPDX-License-Identifier: MIT
+
+if SHIELD_WINNIE
+
+config ZMK_KEYBOARD_NAME
+  default "winnie"
+
+endif

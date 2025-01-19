@@ -1,7 +1,7 @@
 # Copyright (c) 2020 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
-config SHIELD_SLAPS
-    def_bool $(shields_list_contains,slaps)
+config SHIELD_WINNIE
+    def_bool $(shields_list_contains,winnie)
 
 

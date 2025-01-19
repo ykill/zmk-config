@@ -1,6 +1,6 @@
 file_format: "1"
-id: slaps
-name: slaps
+id: winnie
+name: winnie
 type: shield
 url: https://github.com/ykill/zmk-config/
 requires: [pro_micro]
