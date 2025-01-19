@@ -18,7 +18,7 @@
 
         base {
             bindings = <
-                &kp ESCAPE &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5 &kp NUMBER_6 &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0 &kp MINUS &kp EQUAL &kp BACKSPACE &kp DELETE &lt NUM_SYM_NAV KP_EQUAL &kp KP_DIVIDE &kp KP_MULTIPLY
+                &kp ESCAPE &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5 &kp NUMBER_6 &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9 &kp NUMBER_0 &kp MINUS &kp EQUAL &kp BACKSPACE &kp DELETE &lt NUM_SYM_NAV KP_EQUAL &kp SLASH &kp KP_MULTIPLY
                 &kp TAB &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp RETURN &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9 &kp PLUS
                 &kp LEFT_CONTROL &kp A &kp S &lt NUM_SYM_NAV D &kp F &kp G &kp H &kp J &kp K &kp L &kp SEMICOLON &kp SINGLE_QUOTE &kp NUMBER_4 &kp NUMBER_5 &kp NUMBER_6 &kp MINUS
                 &kp LEFT_SHIFT &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &kp COMMA &kp PERIOD &kp SLASH &kp RIGHT_SHIFT &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 kp ENTER
@@ -31,7 +31,7 @@
                 &none &bt BT_NXT &bt BT_PRV &none &none &none &none &none &kp UP &none &none &none &none &none &none &none &kp PAGE_UP &none
                 &trans &none &none &trans &none &none &none &kp LEFT &kp DOWN &kp RIGHT &none &none &kp HOME &none &kp END &none
                 &trans &bt BT_CLR &sys_reset &studio_unlock &none &none &none &none &none &none &none &trans &none &none &kp PAGE_DOWN
-                &kp RIGHT_ALT &kp RIGHT_GUI &none &trans &trans &trans &trans &trans &trans &trans &trans &trans
+                &kp RIGHT_ALT &kp RIGHT_GUI &none &trans &trans &trans &trans &trans &trans &trans &trans
             >;
         };
         extra1 {
