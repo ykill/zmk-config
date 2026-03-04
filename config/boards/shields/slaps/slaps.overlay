@@ -25,7 +25,7 @@
 
 / {
 	chosen {
-		zmk,kscan = &kscan0;
+		zmk,kscan = &kscan_matrix;
 		zmk,physical-layout = &layout_0;
 	};
 
@@ -54,7 +54,7 @@ RC(0,0) RC(0,1)
 			;
 	};
 
-	kscan0: kscan_composite {
+	/* kscan0: kscan_composite {
 		compatible = "zmk,kscan-composite";
 		rows = <6>;
 		columns = <16>;
@@ -67,7 +67,7 @@ RC(0,0) RC(0,1)
 			kscan = <&kscan_matrix>;
 			row-offset = <1>;
 		};
-	};
+	}; */
 
 	kscan_matrix: kscan_matrix {
 		compatible = "zmk,kscan-gpio-matrix";
